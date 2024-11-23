@@ -3,16 +3,15 @@ description: Flet Flashlight control
 homepage: https://flet.dev
 repository: https://github.com/flet-dev/flet/packages/flet_flashlight
 version: 0.24.1
-
+publish_to: none
 
 environment:
-  sdk: '>=3.2.3 <4.0.0'
+  sdk: ">=3.2.3 <4.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
   flutter:
     sdk: flutter
-
 
   collection: ^1.16.0
   torch_light: ^1.0.0
