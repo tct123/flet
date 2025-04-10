@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:collection/collection.dart';
 import 'package:flet/src/utils/badge.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
@@ -94,6 +93,7 @@ import 'progress_ring.dart';
 import 'radio.dart';
 import 'radio_group.dart';
 import 'range_slider.dart';
+import 'reorderable_draggable.dart';
 import 'reorderable_list_view.dart';
 import 'responsive_row.dart';
 import 'row.dart';
@@ -117,7 +117,6 @@ import 'textfield.dart';
 import 'time_picker.dart';
 import 'transparent_pointer.dart';
 import 'vertical_divider.dart';
-import 'window_drag_area.dart';
 
 Widget createControl(Control? parent, String id, bool parentDisabled,
     {Widget? nextChild, bool? parentAdaptive}) {
@@ -718,6 +717,15 @@ Widget createWidget(
           parentDisabled: parentDisabled,
           parentAdaptive: parentAdaptive,
           backend: backend);
+    case "reorderabledraggable":
+      return ReorderableDraggableControl(
+        key: key,
+        parent: parent,
+        control: controlView.control,
+        children: controlView.children,
+        parentDisabled: parentDisabled,
+        parentAdaptive: parentAdaptive,
+      );
     case "gridview":
       return GridViewControl(
           key: key,
@@ -767,6 +775,7 @@ Widget createWidget(
           control: controlView.control,
           parentDisabled: parentDisabled,
           parentAdaptive: parentAdaptive,
+          children: controlView.children,
           backend: backend);
     case "cupertinocheckbox":
       return CupertinoCheckboxControl(
@@ -782,6 +791,7 @@ Widget createWidget(
           control: controlView.control,
           parentDisabled: parentDisabled,
           parentAdaptive: parentAdaptive,
+          children: controlView.children,
           backend: backend);
     case "cupertinoswitch":
       return CupertinoSwitchControl(
@@ -979,13 +989,6 @@ Widget createWidget(
         parentAdaptive: parentAdaptive,
         children: controlView.children,
       );
-    case "windowdragarea":
-      return WindowDragAreaControl(
-          parent: parent,
-          control: controlView.control,
-          children: controlView.children,
-          parentDisabled: parentDisabled,
-          parentAdaptive: parentAdaptive);
     case "linechart":
       return LineChartControl(
           key: key,

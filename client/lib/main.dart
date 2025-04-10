@@ -66,7 +66,7 @@ void main([List<String>? args]) async {
   } else if ((Platform.isWindows || Platform.isMacOS || Platform.isLinux) &&
       !kDebugMode) {
     debugPrint("Flet View is running in Desktop mode");
-    // first argument must be
+    // first argument must exist
     if (args!.isEmpty) {
       throw Exception('Page URL must be provided as a first argument.');
     }
@@ -103,6 +103,7 @@ void main([List<String>? args]) async {
     pageUrl: pageUrl,
     assetsDir: assetsDir,
     errorsHandler: errorsHandler,
+    showAppStartupScreen: true,
     createControlFactories: [
 // --FAT_CLIENT_START--
       flet_audio.createControl,
